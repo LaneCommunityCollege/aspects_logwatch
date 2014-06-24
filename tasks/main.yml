@@ -1,0 +1,18 @@
+---
+# tasks file for aspects_logwatch
+
+- name: Debian - Remove default cron.daily file.
+  when: ansible_os_family == "Debian"
+  file:
+    state="absent"
+    path="/etc/cron.daily/00logwatch"
+  tags:
+    - aspects_logwatch
+
+- name: RedHat - Remove default cron.daily file.
+  when: ansible_os_family == "RedHat"
+  file:
+    state="absent"
+    path="/etc/cron.daily/0logwatch"
+  tags:
+    - aspects_logwatch
