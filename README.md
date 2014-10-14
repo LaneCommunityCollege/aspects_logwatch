@@ -28,8 +28,7 @@ Which user you want the job to run as. Remember, they have to be able to read th
     /usr/sbin/logwatch --output mail --mailto user@example.org --detail high
 
 # Dependencies
-* aspects_common_packages
-* aspects_cron roles.
+* aspects_cron
 
 Example Playbook
 -------------------------

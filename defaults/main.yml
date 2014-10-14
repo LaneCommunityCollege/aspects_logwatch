@@ -1,0 +1,6 @@
+---
+aspects_logwatch_packages:
+  logwatch:
+    state: "latest"
+    Debian: logwatch
+    RedHat: logwatch

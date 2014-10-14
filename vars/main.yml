@@ -1,5 +1,0 @@
----
-# vars file for aspects_logwatch
-aspects_common_packages:
-  logwatch:
-    state: "latest"
