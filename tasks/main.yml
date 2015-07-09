@@ -2,7 +2,7 @@
 # tasks file for aspects_logwatch
 - include: installPackages.yml
   tags:
-  - aspects_logstash
+  - aspects_logwatch
 - name: Debian - Remove default cron.daily file.
   when: ansible_os_family == "Debian"
   file:
