@@ -1,4 +1,4 @@
-# aspects_logwatch
+# UNMAINTAINED - aspects_logwatch
 Configure Logwatch to send reports to whichever email addresses you want.
 
 # Requirements
