@@ -18,3 +18,15 @@
     path="/etc/cron.daily/0logwatch"
   tags:
     - aspects_logwatch
+
+- name: Add /etc/logwatch/conf/services files.
+  copy:
+    src: "{{ item.value.src }}"
+    dest: "{{ item.value.dest }}"
+    owner: root
+    group: root
+    mode: "0644"
+  with_dict: aspects_logwatch_conf_services|default({})
+  tags:
+    - aspects_logwatch
+    - aspects_logwatch_conf_services
