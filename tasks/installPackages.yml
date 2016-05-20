@@ -1,14 +1,22 @@
 ---
 - name: Debian - Install python-apt for use with ansible apt modules.
   when: ansible_os_family == "Debian"
-  apt: pkg=python-apt state=latest update_cache="yes" cache_valid_time="86400"
+  apt:
+    pkg: python-apt
+    state: latest
+    update_cache: "yes"
+    cache_valid_time: "86400"
   tags:
     - aspects_logwatch
     - aspects_logwatch_package_install
 
 - name: Debian - Install logwatch packages with apt
   when: ansible_os_family == "Debian" and item.value.state != 'default' and item.value.state != 'purged' and item.value.Debian is defined
-  apt: pkg={{ item.value.Debian }} state={{ item.value.state }} update_cache="yes" cache_valid_time="86400"
+  apt:
+    pkg: "{{ item.value.Debian }}"
+    state: "{{ item.value.state }}"
+    update_cache: "yes"
+    cache_valid_time: "86400"
   with_dict: aspects_logwatch_packages
   tags:
     - aspects_logwatch
@@ -16,7 +24,9 @@
 
 - name: RedHat - Install logwatch packages with yum
   when: ansible_os_family == "RedHat" and item.value.state != 'default' and item.value.state != 'purged' and item.value.RedHat is defined
-  yum: name={{ item.value.RedHat }} state={{ item.value.state }}
+  yum:
+    name: "{{ item.value.RedHat }}"
+    state: "{{ item.value.state }}"
   with_dict: aspects_logwatch_packages
   tags:
     - aspects_logwatch
@@ -24,7 +34,9 @@
 
 - name: Suse - Install logwatch packages with Zypper
   when: ansible_os_family == "Suse" and item.value.state != 'default' and item.value.state != 'purged' and item.value.Suse is defined
-  zypper: name={{ item.value.Suse }} state={{ item.value.state }}
+  zypper:
+    name: "{{ item.value.Suse }}"
+    state: "{{ item.value.state }}"
   with_dict: aspects_logwatch_packages
   tags:
     - aspects_logwatch

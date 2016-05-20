@@ -1,6 +1,6 @@
 ---
 aspects_logwatch_packages:
   logwatch:
-    state: "latest"
+    state: "present"
     Debian: logwatch
     RedHat: logwatch
