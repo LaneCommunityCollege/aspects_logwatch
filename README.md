@@ -19,13 +19,25 @@ Set to ```no``` unless you want to use ansible's backup tool. See http://docs.an
 ### day
 ### weekday
 ### month
-How often you want to run the job. For a daily run, just set ```minute``` to something like ```0``` or ```5```, and ```hour``` to whichever hour you want to run it. A good choice might be ```0```. Then set the rest to ```*```. 
+How often you want to run the job. For a daily run, just set ```minute``` to something like ```0``` or ```5```, and ```hour``` to whichever hour you want to run it. A good choice might be ```0```. Then set the rest to ```*```.
 
 ### user
 Which user you want the job to run as. Remember, they have to be able to read the log files, and execute the logwatch program. ```root``` can do all that.
 
 ### job
     /usr/sbin/logwatch --output mail --mailto user@example.org --detail high
+
+## aspects_logwatch_conf_services
+Add a dict of the form:
+
+    aspects_logwatch_conf_services:
+      sudo:
+        src: logwatch/services/sudo.conf
+        dest: /etc/logwatch/conf/services/sudo.conf
+
+The /etc version of the file completely overrides the core version. So make sure you copy everything from the core version into the override version.
+
+See the ansible copy module docs for where the source file should be saved.
 
 # Dependencies
 * aspects_cron
