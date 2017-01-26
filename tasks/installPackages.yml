@@ -1,6 +1,7 @@
 ---
+# Install Apache Packages.
 - name: Debian - Install python-apt for use with ansible apt modules.
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian" or ansible_os_family == "Linuxmint"
   apt:
     pkg: python-apt
     state: latest
@@ -11,33 +12,45 @@
     - aspects_logwatch_package_install
 
 - name: Debian - Install logwatch packages with apt
-  when: ansible_os_family == "Debian" and item.value.state != 'default' and item.value.state != 'purged' and item.value.Debian is defined
+  when:
+    (ansible_os_family == "Debian" or ansible_os_family == "Linuxmint") and
+    item.value.state != 'default' and
+    item.value.state != 'purged' and
+    item.value.Debian is defined
   apt:
     pkg: "{{ item.value.Debian }}"
     state: "{{ item.value.state }}"
     update_cache: "yes"
     cache_valid_time: "86400"
-  with_dict: aspects_logwatch_packages
+  with_dict: "{{ aspects_logwatch_packages }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_package_install
 
 - name: RedHat - Install logwatch packages with yum
-  when: ansible_os_family == "RedHat" and item.value.state != 'default' and item.value.state != 'purged' and item.value.RedHat is defined
+  when:
+    ansible_os_family == "RedHat" and
+    item.value.state != 'default' and
+    item.value.state != 'purged' and
+    item.value.RedHat is defined
   yum:
     name: "{{ item.value.RedHat }}"
     state: "{{ item.value.state }}"
-  with_dict: aspects_logwatch_packages
+  with_dict: "{{ aspects_logwatch_packages }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_package_install
 
 - name: Suse - Install logwatch packages with Zypper
-  when: ansible_os_family == "Suse" and item.value.state != 'default' and item.value.state != 'purged' and item.value.Suse is defined
+  when:
+    ansible_os_family == "Suse" and
+    item.value.state != 'default' and
+    item.value.state != 'purged' and
+    item.value.Suse is defined
   zypper:
     name: "{{ item.value.Suse }}"
     state: "{{ item.value.state }}"
-  with_dict: aspects_logwatch_packages
+  with_dict: "{{ aspects_logwatch_packages }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_package_install

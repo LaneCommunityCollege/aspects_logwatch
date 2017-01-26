@@ -26,7 +26,7 @@
     owner: root
     group: root
     mode: "0644"
-  with_dict: aspects_logwatch_conf_services|default({})
+  with_dict: "{{ aspects_logwatch_conf_services|default({}) }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_conf_services
