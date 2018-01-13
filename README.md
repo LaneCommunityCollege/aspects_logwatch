@@ -30,10 +30,12 @@ Which user you want the job to run as. Remember, they have to be able to read th
 ## aspects_logwatch_conf_services
 Add a dict of the form:
 
+```yaml
     aspects_logwatch_conf_services:
       sudo:
         src: logwatch/services/sudo.conf
         dest: /etc/logwatch/conf/services/sudo.conf
+```
 
 The /etc version of the file completely overrides the core version. So make sure you copy everything from the core version into the override version.
 
@@ -47,6 +49,7 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
+```yaml
     - hosts: servers
       roles:
          - { role: username.rolename, x: 42 }
@@ -74,6 +77,7 @@ Including an example of how to use your role (for instance, with variables passe
               month: "*"
               user: "root"
               job: "/usr/sbin/logwatch --output mail --mailto user2@example.org --detail high"
+```
 
 # License
 MIT
