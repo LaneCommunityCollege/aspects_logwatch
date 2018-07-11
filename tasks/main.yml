@@ -21,7 +21,7 @@
 
 - name: Add /etc/logwatch/conf/services files.
   copy:
-    src: "{{ item.value.src }}"
+    src: "{{ inventory_dir }}/{{ item.value.src }}"
     dest: "{{ item.value.dest }}"
     owner: root
     group: root
