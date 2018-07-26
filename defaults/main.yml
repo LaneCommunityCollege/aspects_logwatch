@@ -1,6 +1,17 @@
 ---
-aspects_logwatch_packages:
+aspects_logwatch_enabled: False
+aspects_packages_enabled: True
+aspects_packages_packages:
   logwatch:
     state: "present"
-    Debian: logwatch
-    RedHat: logwatch
+    Ubuntu:
+      1404: "logwatch"
+      1604: "logwatch"
+      1804: "logwatch"
+    Debian:
+      9: "logwatch"
+    CentOS:
+      7: "logwatch"
+    Oracle:
+      6: "logwatch"
+      7: "logwatch"
