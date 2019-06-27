@@ -5,13 +5,11 @@ aspects_packages_packages:
   logwatch:
     state: "present"
     Ubuntu:
-      1404: "logwatch"
       1604: "logwatch"
       1804: "logwatch"
     Debian:
       9: "logwatch"
     CentOS:
       7: "logwatch"
-    Oracle:
-      6: "logwatch"
+    OracleLinux:
       7: "logwatch"

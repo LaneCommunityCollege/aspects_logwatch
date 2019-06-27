@@ -1,29 +1,27 @@
 ---
-- name: Debian - Remove default cron.daily file.
-  when: aspects_logwatch_enabled and ansible_os_family == "Debian"
-  file:
-    state: "absent"
-    path: "/etc/cron.daily/00logwatch"
-  tags:
-    - aspects_logwatch
 
-- name: RedHat - Remove default cron.daily file.
-  when: aspects_logwatch_enabled and ansible_os_family == "RedHat"
+- name: Remove default cron.daily files.
+  when: aspects_logwatch_enabled
   file:
     state: "absent"
-    path: "/etc/cron.daily/0logwatch"
+    path: "{{ item }}"
+  loop:
+    - "/etc/cron.daily/00logwatch"
+    - "/etc/cron.daily/0logwatch"
   tags:
     - aspects_logwatch
 
 - name: Add /etc/logwatch/conf/services files.
-  when: aspects_logwatch_enabled and aspects_logwatch_conf_services is defined
+  when:
+    - aspects_logwatch_enabled
+    - aspects_logwatch_conf_services is defined
   copy:
     src: "{{ inventory_dir }}/{{ item.value.src }}"
     dest: "{{ item.value.dest }}"
     owner: root
     group: root
     mode: "0644"
-  with_dict: "{{ aspects_logwatch_conf_services|default({}) }}"
+  loop: "{{ aspects_logwatch_conf_services|dict2items }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_conf_services

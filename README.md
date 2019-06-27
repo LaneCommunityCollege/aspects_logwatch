@@ -36,6 +36,10 @@ If you are overwriting a file that comes with Logwatch, make sure you copy every
       vars:
           aspects_cron_enabled: True
           aspects_logwatch_enabled: True
+          aspects_logwatch_conf_services:
+            sudo:
+              src: files/logwatch/services/sudo.conf
+              dest: /etc/logwatch/conf/services/sudo.conf
           aspects_cron_jobs:
             logwatchemail1:
               name: "Logwatch email to user@example.org"
