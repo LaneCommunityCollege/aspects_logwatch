@@ -6,6 +6,13 @@ Install logwatch and remove the cron jobs from cron.daily so you can manage them
 # Requirements
 The server needs postfix or other email agent installed and configured.
 
+# Setup
+## Install Logwatch
+If you do **not** use aspects_packages to manage OS packages, then make sure to install Logwatch before running this role.
+
+## Configure Cron
+You will need to manually configure the Logwatch cronjob. Either use aspects_cron, or your own method.
+ 
 # Role Variables
 ## aspects_logwatch_enabled
 Boolean. False to skip role tasks. True to run role tasks.
@@ -24,8 +31,8 @@ Use this form:
 If you are overwriting a file that comes with Logwatch, make sure you copy everything from that version into the new version.
 
 # Dependencies
-* aspects_packages
-* aspects_cron
+* aspects_packages (optional)
+* aspects_cron (optional)
 
 # Example Playbook
 
