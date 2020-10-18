@@ -6,8 +6,10 @@ aspects_packages_packages:
     Ubuntu:
       1604: "logwatch"
       1804: "logwatch"
+      2004: "logwatch"
     Debian:
       9: "logwatch"
+      10: "logwatch"
     CentOS:
       7: "logwatch"
     OracleLinux:

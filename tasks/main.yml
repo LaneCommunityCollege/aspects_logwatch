@@ -21,7 +21,7 @@
     owner: root
     group: root
     mode: "0644"
-  loop: "{{ aspects_logwatch_conf_services|dict2items }}"
+  loop: "{{ aspects_logwatch_conf_services | default({}) | dict2items }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_conf_services
