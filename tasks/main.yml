@@ -16,12 +16,12 @@
     - aspects_logwatch_enabled
     - aspects_logwatch_conf_services is defined
   copy:
-    src: "{{ inventory_dir }}/{{ item.value.src }}"
-    dest: "{{ item.value.dest }}"
+    src: "{{ inventory_dir }}/{{ item.1.src }}"
+    dest: "{{ item.1.dest }}"
     owner: root
     group: root
     mode: "0644"
-  loop: "{{ aspects_logwatch_conf_services | default({}) | dict2items }}"
+  loop: "{{ aspects_logwatch_conf_services | default({}) | dictsort }}"
   tags:
     - aspects_logwatch
     - aspects_logwatch_conf_services
