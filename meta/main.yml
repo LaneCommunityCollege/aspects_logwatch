@@ -4,7 +4,7 @@ galaxy_info:
   description: Install Logwatch and configure cron jobs to send email reports.
   company: Lane Community College
   license: MIT
-  min_ansible_version: 2.8
+  min_ansible_version: 2.10
   platforms:
   - name: CentOS
     versions:
@@ -14,12 +14,10 @@ galaxy_info:
       - 7
   - name: Ubuntu
     versions:
-    - xenial
     - bionic
     - focal
   - name: Debian
     versions:
-    - 9
     - 10
   categories:
   - system
