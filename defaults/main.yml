@@ -13,3 +13,5 @@ aspects_packages_packages:
       7: "logwatch"
     OracleLinux:
       7: "logwatch"
+      8: "logwatch"
+      9: "logwatch"
